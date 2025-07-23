@@ -1,0 +1,22 @@
+.header {
+  width: 100%;
+  max-width: 100%;
+  padding: 3rem;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      img {
+        display: block;
+        width: 140px;
+      }
+    }
+
+    @media screen and (max-width: 1200px) {
+      .header {
+        padding: 3rem;
+      }
+    }
+  }
+}
