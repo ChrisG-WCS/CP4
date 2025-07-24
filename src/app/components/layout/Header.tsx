@@ -8,7 +8,7 @@ const Header = () => {
         <Link href="/">
           <img src="/Arkadia.png" alt="Logo" />
         </Link>
-        <Link href="/Contact">contact me</Link>
+        <Link href="/Support">support</Link>
       </nav>
     </header>
   );

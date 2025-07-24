@@ -10,13 +10,6 @@
   text-align: center;
 }
 
-.page h1 {
-  font-family: var(--font-barlow);
-  font-size: 48px;
-  text-transform: uppercase;
-  color: var(--heading-h1-color);
-}
-
 .page h2 {
   font-family: var(--font-barlow), sans-serif;
   font-weight: 400;

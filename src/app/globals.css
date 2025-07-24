@@ -6,12 +6,18 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #272727;
     --foreground: #ededed;
   }
   html {
     color-scheme: dark;
   }
+}
+h1 {
+  font-family: var(--font-barlow);
+  font-size: 48px;
+  text-transform: uppercase;
+  color: var(--heading-h1-color);
 }
 
 html,
