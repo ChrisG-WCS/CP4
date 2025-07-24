@@ -44,7 +44,7 @@ const Bibliotheque = () => {
         </li>
         <li className={styles.gameCard}>
           <article>
-            <h2>Batman Arkham Knight</h2>
+            <h2>Sonic The HedgeHog</h2>
             <img
               src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_3ds_download_software_7/SI_3DSDS_3DSonicTheHedgehog_image1600w.jpg"
               alt="Sonic The HedgeHog"
@@ -80,10 +80,10 @@ const Bibliotheque = () => {
         </li>
         <li className={styles.gameCard}>
           <article>
-            <h2>Spiderman</h2>
+            <h2>Spider-Man Miles Mirales</h2>
             <img
-              src="https://gmedia.playstation.com/is/image/SIEPDC/spiderman-remastered-keyart-01-ps5-29jul22$en?$facebook$"
-              alt="Spiderman"
+              src="https://antredeluciole.fr/wp-content/uploads/Spiderman-Miles-Morales-PS5-Banner.jpg"
+              alt="Spider-Man Miles Mirales"
             />
           </article>
         </li>
