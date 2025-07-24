@@ -46,8 +46,8 @@ const Bibliotheque = () => {
           <article>
             <h2>Batman Arkham Knight</h2>
             <img
-              src="https://image.api.playstation.com/gs2-sec/acpkgo/prod/CUSA00133_00/374/i_21516ca32977519346e7b5cbf52fcadf722998b0d0a781fbeeea687cd3dca173/i/icon0.png"
-              alt="Batman arkham knight"
+              src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_3ds_download_software_7/SI_3DSDS_3DSonicTheHedgehog_image1600w.jpg"
+              alt="Sonic The HedgeHog"
             />
           </article>
         </li>
@@ -75,6 +75,15 @@ const Bibliotheque = () => {
             <img
               src="https://leclaireur.fnac.com/wp-content/uploads/2025/06/001-mario-kart-world-01-1256x640.jpg"
               alt="Mario Kart World"
+            />
+          </article>
+        </li>
+        <li className={styles.gameCard}>
+          <article>
+            <h2>Spiderman</h2>
+            <img
+              src="https://gmedia.playstation.com/is/image/SIEPDC/spiderman-remastered-keyart-01-ps5-29jul22$en?$facebook$"
+              alt="Spiderman"
             />
           </article>
         </li>
