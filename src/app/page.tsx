@@ -11,7 +11,7 @@ export default function Home() {
         organise tes jeux, et reste informé des nouveautés. Commence à explorer
         ton univers gaming dès aujourd’hui !
       </h2>
-      <Link className={styles.cta} href="/bibliothèque">
+      <Link className={styles.cta} href="/bibliotheque">
         Start now 💿{" "}
       </Link>
     </section>
