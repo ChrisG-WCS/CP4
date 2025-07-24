@@ -4,7 +4,7 @@ import { GameModel } from "../model/game";
 const Bibliotheque = () => {
   return (
     <section className={styles.library}>
-      <h1>Trending</h1>
+      <h1>Jeux du moment</h1>
       <ul className={styles.games}>
         <li className={styles.gameCard}>
           <article>
