@@ -1,3 +1,4 @@
+// src/app/bibliotheque/page.tsx
 import styles from "./bibliotheque.module.css";
 import { GameModel } from "../model/GameModel";
 
