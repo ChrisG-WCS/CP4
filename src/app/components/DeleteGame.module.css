@@ -1,0 +1,89 @@
+.button {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.deleteButton {
+  background-color: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
+}
+
+.button:disabled {
+  background-color: #f5f5f5;
+  color: #aaa;
+  cursor: not-allowed;
+  border-color: #eee;
+}
+
+.confirmModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000;
+  text-align: center;
+}
+
+.confirmModal p {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.confirmModal button {
+  padding: 6px 12px;
+  margin: 0 4px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.confirmModal button:first-of-type {
+  background-color: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+
+.confirmModal button:last-of-type {
+  background-color: #f0f0f0;
+  color: #333;
+  border-color: #ddd;
+}
+
+.messageBox {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: white;
+  z-index: 999;
+  min-width: 180px;
+  text-align: center;
+}
+
+.messageBox.success {
+  background-color: #2ecc71;
+}
+
+.messageBox.error {
+  background-color: #e74c3c;
+}
