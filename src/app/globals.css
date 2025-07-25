@@ -2,22 +2,27 @@
   --background: #ffffff;
   --foreground: #171717;
   --font-barlow: "Barlow", sans-serif;
+  --heading-h1-color: #171717;
+  --heading-h2-color: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #272727;
     --foreground: #ededed;
+    --heading-h1-color: #ededed;
+    --heading-h2-color: #ededed;
   }
   html {
     color-scheme: dark;
   }
 }
-h1 {
-  font-family: var(--font-barlow);
-  font-size: 48px;
-  text-transform: uppercase;
-  color: var(--heading-h1-color);
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
 html,
@@ -34,10 +39,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+h1 {
+  font-family: var(--font-barlow);
+  font-size: 48px;
+  text-transform: uppercase;
+  color: var(--heading-h1-color);
+  text-align: center;
+}
+
+h2 {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+  color: var(--heading-h2-color);
+  text-align: center;
 }
 
 a {

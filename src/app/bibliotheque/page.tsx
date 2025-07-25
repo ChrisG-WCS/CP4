@@ -1,92 +1,84 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import styles from "./bibliotheque.module.css";
-import { GameModel } from "../model/game";
+import { GameModel } from "../models/GameModel";
+import Link from "next/link";
+import DeleteButton from "@/app/components/DeleteGame";
 
 const Bibliotheque = () => {
+  const [games, setGames] = useState<GameModel[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchGames = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch("http://localhost:3000/api/games");
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP: ${response.status}`);
+      }
+      const result = await response.json();
+      setGames(result.games || []);
+    } catch (e: any) {
+      console.error("Erreur lors de la récupération des jeux:", e);
+      setError(`Impossible de charger les jeux: ${e.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchGames();
+  }, []);
+
+  const handleGameDeleted = () => {
+    fetchGames();
+  };
+
+  if (loading) {
+    return (
+      <section className={styles.library}>
+        <h1>Jeux du moment</h1>
+        <p>Chargement des jeux...</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={styles.library}>
+        <h1>Jeux du moment</h1>
+        <p style={{ color: "red" }}>{error}</p>
+      </section>
+    );
+  }
+
   return (
     <section className={styles.library}>
       <h1>Jeux du moment</h1>
+      <Link className={styles.cta} href="/pixel_lab">
+        PIXEL LAB 🔧{" "}
+      </Link>
       <ul className={styles.games}>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>Clair Obscur</h2>
-            <img
-              src="https://bigmedia.bpifrance.fr/sites/default/files/styles/bigmedia_article/public/2025-05/Visuel%20article%20%2822%29.png?itok=ASRAkW9e"
-              alt="Clair Obscur"
-            />
-          </article>
-        </li>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>Tekken 8</h2>
-            <img
-              src="https://m2gaming.ca/wp-content/uploads/2024/02/Tekken-8.jpg"
-              alt="Tekken 8"
-            />
-          </article>
-        </li>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>Super Smash Bros Brawl</h2>
-            <img
-              src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/wii_24/SI_Wii_SuperSmashBrosBrawl_image1600w.jpg"
-              alt="Smash bros brawl"
-            />
-          </article>
-        </li>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>World of Warcraft: Wrath of the Lich King</h2>
-            <img
-              src="https://gepig.com/game_cover_460w/450.jpg"
-              alt="wow tlk"
-            />
-          </article>
-        </li>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>Sonic The HedgeHog</h2>
-            <img
-              src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_3ds_download_software_7/SI_3DSDS_3DSonicTheHedgehog_image1600w.jpg"
-              alt="Sonic The HedgeHog"
-            />
-          </article>
-        </li>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>Monster Hunter Wilds</h2>
-            <img
-              src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2246340/a1df989a3b439e15171dc7144c1ce13c32abcae6/capsule_616x353.jpg?t=1753229426"
-              alt="Monster Hunter Wilds"
-            />
-          </article>
-        </li>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>StarCraft</h2>
-            <img
-              src="https://bnetcmsus-a.akamaihd.net/cms/blog_header/2g/2G4VZH5TIWJF1602720144046.jpg"
-              alt="StarCraft"
-            />
-          </article>
-        </li>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>Mario Kart World</h2>
-            <img
-              src="https://leclaireur.fnac.com/wp-content/uploads/2025/06/001-mario-kart-world-01-1256x640.jpg"
-              alt="Mario Kart World"
-            />
-          </article>
-        </li>
-        <li className={styles.gameCard}>
-          <article>
-            <h2>Spider-Man Miles Mirales</h2>
-            <img
-              src="https://antredeluciole.fr/wp-content/uploads/Spiderman-Miles-Morales-PS5-Banner.jpg"
-              alt="Spider-Man Miles Mirales"
-            />
-          </article>
-        </li>
+        {games.length === 0 ? (
+          <p>Aucun jeu trouvé pour le moment. Créez-en un !</p>
+        ) : (
+          games.map((game) => (
+            <li key={`game-${game.id}`} className={styles.gameCard}>
+              <article>
+                <h2>{game.title}</h2>
+                <img src={game.img} alt={game.title} />
+
+                <DeleteButton
+                  gameId={game.id}
+                  onDeleteSuccess={handleGameDeleted}
+                />
+              </article>
+            </li>
+          ))
+        )}
       </ul>
     </section>
   );
