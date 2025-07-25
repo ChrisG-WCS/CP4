@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createGame } from "@/app/service/GameService";
 import { GameModel } from "@/app/models/GameModel";
+import styles from "./GameForm.module.css"; // Correct: Use 'styles' for the imported module
 
 export default function GameForm() {
   const [isPending, setIsPending] = useState<boolean>(false);
@@ -18,19 +19,21 @@ export default function GameForm() {
     const description = formData.get("description") as string;
     const img = formData.get("img") as string;
 
+    // Added a 'return' here to stop execution if fields are missing
     if (!title || !description || !img) {
       setMessage("Veuillez remplir tous les champs obligatoires.");
       setIsError(true);
       setIsPending(false);
+      return;
     }
 
     try {
       const createdGame: GameModel = await createGame(formData);
-
       setMessage(`Jeu "${createdGame.title}" ajouté avec succès !`);
+      // Optional: Clear form fields after successful submission
+      // You'd need to add state for each input's value to do this.
     } catch (e: any) {
       console.error("Erreur inattendue lors de la création du jeu :", e);
-
       setMessage(
         `Une erreur est survenue : ${e.message || "Erreur inconnue."}`
       );
@@ -41,10 +44,16 @@ export default function GameForm() {
   };
 
   return (
-    <div className="game-form-container">
+    // Apply the class from the CSS module to the main container
+    <div className={styles.gameFormContainer}>
       <h2>Ajouter un nouveau jeu</h2>
       {message && (
-        <p style={{ color: isError ? "red" : "green", marginTop: "10px" }}>
+        // Dynamically apply 'success' or 'error' class based on 'isError' state
+        <p
+          className={`${styles.message} ${
+            isError ? styles.error : styles.success
+          }`}
+        >
           {message}
         </p>
       )}

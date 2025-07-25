@@ -1,6 +1,5 @@
 "use client";
 import GameForm from "@/app/components/AddGameForm";
-import styles from "./pixel_lab.module.css";
 
 export default function PixelLabPage() {
   return (
